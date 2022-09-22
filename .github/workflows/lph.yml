@@ -19,7 +19,7 @@ jobs:
           export ORGS_JSON=orgs.json
           gh api \
             -H "Accept: application/vnd.github+json" \
-            /users/${{github.actor}}/events
+            /users/${{github.actor}}/events > events.json
       - name: archive json
         uses: actions/upload-artifact@v3
         with:
