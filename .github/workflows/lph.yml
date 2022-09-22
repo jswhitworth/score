@@ -12,4 +12,7 @@ jobs:
         run: |
           echo "github.actor: ${{github.actor}}"
           echo "github.repository_owner: ${{github.actor}}"
-          gh api -X GET "users/${{github.actor}}/orgs" -F per_page=100 --paginate 
+          gh api -X GET "users/${{github.actor}}/orgs" -F per_page=100 --paginate
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            /users
