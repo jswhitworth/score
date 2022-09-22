@@ -24,4 +24,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: orgs
-          path: orgs.json
+          path: |
+            orgs.json
+            events.json
