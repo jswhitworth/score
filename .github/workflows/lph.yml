@@ -7,11 +7,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: gh api calls
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
           echo "github.actor: ${{github.actor}}"
           echo "github.repository_owner: ${{github.actor}}"
+          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
           gh api \
             -H "Accept: application/vnd.github+json" \
             /user/orgs
