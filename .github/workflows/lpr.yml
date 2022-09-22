@@ -1,2 +1,11 @@
 name: lines per hour
-on: push
+on:
+  workflow_call:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: list auth
+        run: "echo \"github actor: $github.actor\""
