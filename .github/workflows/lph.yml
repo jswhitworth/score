@@ -16,8 +16,18 @@ jobs:
           gh api \
             -H "Accept: application/vnd.github+json" \
             /user/orgs | jq '[.[].login] | {orgs: .}' > orgs.json
+          export ORGS_JSON=orgs.json
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            /users/${{github.actor}}/events > events.json
+          cat events.json | \
+            jq '.[] | select(.type=="PushEvent") | .payload.commits[]' | \
+            jq -s '.' > commits.json
       - name: archive json
         uses: actions/upload-artifact@v3
         with:
-          name: orgs
-          path: orgs.json
+          name: output
+          path: |
+            orgs.json
+            events.json
+            commits.json
