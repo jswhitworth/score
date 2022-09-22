@@ -1,0 +1,23 @@
+name: lines per hour
+on: push
+jobs:
+  build:
+    permissions: read-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: gh api calls
+        env:
+          GITHUB_TOKEN: ${{secrets.PAT}}
+        run: |
+          echo "github.actor: ${{github.actor}}"
+          echo "github.repository_owner: ${{github.actor}}"
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            /user/orgs | jq '[.[].login] | {orgs: .}' > orgs.json
+      - name: archive json
+        uses: actions/upload-artifact@v3
+        with:
+          name: orgs
+          path: orgs.json
