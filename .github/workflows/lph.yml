@@ -14,4 +14,4 @@ jobs:
           echo "github.repository_owner: ${{github.actor}}"
           gh api \
             -H "Accept: application/vnd.github+json" \
-            /userorgs
+            /user/orgs
