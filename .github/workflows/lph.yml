@@ -1,5 +1,5 @@
 name: lines per hour
-on: workflow_call
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
