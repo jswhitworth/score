@@ -23,7 +23,7 @@ jobs:
       - name: archive json
         uses: actions/upload-artifact@v3
         with:
-          name: orgs
+          name: output
           path: |
             orgs.json
             events.json
