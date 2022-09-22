@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v2
       - name: gh api calls
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.PAT}}
         run: |
           echo "github.actor: ${{github.actor}}"
           echo "github.repository_owner: ${{github.actor}}"
