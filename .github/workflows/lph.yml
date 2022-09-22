@@ -7,4 +7,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: list auth
-        run: "echo \"github actor: $github.actor\""
+        run: "echo \"github actor: ${{github.actor}}\""
